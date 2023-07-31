@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: rgb(63, 94, 251);
+            background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .to-do {
+            border: 1px solid;
+            height: 470px;
+        }
+        .todo-doing-done{
+            margin: 0 auto;
+            width: 1200px;
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            /* display: none; */
+        }
+        .to-do{
+            width: 33.33%;
+            background-color: #4158D0;
+            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+        }
+        .to-do h1{
+            background: rgb(238,174,202);
+            background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+            color: white;
+            display: flex;
+            gap: 10px;
+        }
+        .addItem-settings{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
+        .add-item-btn{
+            padding: 5px 125px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            background-color: #00DBDE;
+            background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+            border: none;
+        }
+        .settings{
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+            
+        }
+        .add-item-btn,.settings:hover{
+            background-color: #00DBDE;
+            background-image: linear-gradient(90deg, #94bcbd 0%, #fd82ff 100%);
+            
+        }
+        .new-item{
+            text-align:center;
+            margin: 0 auto;
+            width: 300px;
+            background-color: #4158D0;
+            padding: 20px;
+            margin-top: 200px;
+            border-radius: 15px;
+            display: none;
+        }
+        button{
+            cursor: pointer;
+        }
+        .heading{
+            font-size: 30px;
+            color: white;
+        }
+        .want-to-do,.on-the-way,.did{
+            border: none;
+            padding: 10px 20px;
+            background-color: purple;
+            color: white;
+            font-weight: bold;
+            border-radius: 25px;
+        }
+        .buttons-of-colunms{
+            margin-top: 10px;
+        }
+        .item-input{
+            height: 30px;
+            width: 230px;
+            background-color: #4158D0;
+            border-radius: 20px;
+        }
+        .back-button{
+            cursor: pointer;
+        }
+        ul {
+            list-style-type: none;
+        }
+        li{
+            font-size: 30px;
+            color: floralwhite;
+            
+        }
+        .edit{
+            margin-left: 180px;
+        }
+        .edit,.delete{
+            cursor: pointer;
+            font-size: 40px;
+            color: white;
+        }
+        .added-item{
+            display: flex;
+            align-items: center;
+            cursor: grab;
+        }
+        .column-ul {
+            min-height: 300px;
+        }
+    </style>
+    <link rel="stylesheet" href="jquery-ui-1.13.2.custom/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="jquery-ui-1.13.2.custom/jquery-ui.min.js"></script>    
+    <script src="to-do-list.js"></script>
+</head>
+<body>
+    <div class="todo-doing-done">
+        <div class="to-do coloumn-1">
+            <h1>
+                <svg width="30" hseight="30" viewBox="0 0 512 512">
+                    <path
+                        d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z" />
+                </svg>
+                TODO
+            </h1>
+            <div class="to-do-list ">
+                <ul class="column-ul">
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="to-do coloumn-2">
+            <h1>
+                <svg width="30" height="30" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z" fill="blue" stroke="black" stroke-width="2" />
+                  </svg>                  
+                Doing
+            </h1>
+            <div class="to-do-list doing-list">
+                <ul class="column-ul">
+                   
+                </ul>
+            </div>
+        </div>
+        <div class="to-do coloumn-3">
+            <h1>
+                <svg width="30" height="30" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
+                </svg>
+                Done
+            </h1>
+            <div class="to-do-list done-list">
+                <ul  class="column-ul">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="addItem-settings">
+        <button class="add-item-btn">Add item</button>
+        <p class="settings">&#9881;</p>
+    </div>
+    <div class="new-item">
+        <div class="heading"><span class="back-button">&#8592</span> <span>ADD A NEW ITEM</span>  <span>+</span></div>
+        <input placeholder="Write your item here" class="item-input" type="text">
+        <div class="buttons-of-colunms">
+            <button class="want-to-do">TODO</button>
+            <button class="on-the-way">Doing</button>
+            <button class="did">Done</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
